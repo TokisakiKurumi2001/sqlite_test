@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'models/Vocab.dart';
 
 class TodoCard extends StatelessWidget {
-  final String word;
-  TodoCard({this.word});
+  final Vocab vocab;
+  TodoCard({this.vocab});
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Column(
         children: <Widget>[
           Text(
-            '$word',
+            '${vocab.word}',
             style: TextStyle(fontSize: 40),
           ),
           Row(
