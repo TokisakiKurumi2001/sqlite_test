@@ -61,4 +61,13 @@ class DBInteract {
     final result = await db.rawUpdate(sql, params);
     DatabaseCreator.databaseLog('Update vocab', sql, null, result, params);
   }
+
+  static Future<int> todosCount() async {
+    final data = await db
+        .rawQuery('''SELECT MAX(id) FROM ${DatabaseCreator.tableName}''');
+
+    int count = data[0].values.elementAt(0);
+    int idForNewItem = count == null ? 1 : count++;
+    return idForNewItem;
+  }
 }
